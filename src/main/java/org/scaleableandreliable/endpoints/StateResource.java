@@ -30,4 +30,11 @@ public class StateResource {
     var allByIcao24 = repo.findAllByIcao24(icao24);
     return allByIcao24;
   }
+  
+  @GET
+  @Path("active")
+  @Produces(MediaType.APPLICATION_JSON)
+  public List<AircraftState> getAllState() {
+    return repo.findAll().list();
+  }
 }
