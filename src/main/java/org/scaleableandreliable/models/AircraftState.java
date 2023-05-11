@@ -1,5 +1,6 @@
 package org.scaleableandreliable.models;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
@@ -31,7 +32,7 @@ public class AircraftState extends PanacheEntityBase {
   private float velocity;
   private float trueTrack;
   private float verticalRate;
-  @ElementCollection private List<Integer> sensors;
+//  @ElementCollection private List<Integer> sensors;
   private float geoAltitude;
   private String squawk;
   private boolean spi;
@@ -73,7 +74,7 @@ public class AircraftState extends PanacheEntityBase {
     this.velocity = velocity;
     this.trueTrack = trueTrack;
     this.verticalRate = verticalRate;
-    this.sensors = sensors;
+//    this.sensors = sensors;
     this.geoAltitude = geoAltitude;
     this.squawk = squawk;
     this.spi = spi;
@@ -194,14 +195,14 @@ public class AircraftState extends PanacheEntityBase {
     return this;
   }
 
-  public List<Integer> getSensors() {
-    return sensors == null ? null : sensors;
-  }
-
-  public AircraftState setSensors(List<Integer> sensors) {
-    this.sensors = sensors;
-    return this;
-  }
+//  public List<Integer> getSensors() {
+//    return sensors == null ? null : sensors;
+//  }
+//
+//  public AircraftState setSensors(List<Integer> sensors) {
+//    this.sensors = sensors;
+//    return this;
+//  }
 
   public float getGeoAltitude() {
     return geoAltitude;
@@ -318,29 +319,8 @@ public class AircraftState extends PanacheEntityBase {
   }
   
   
-  
+  @Override
   public String toString() {
-    final StringBuffer sb = new StringBuffer("AircraftState{");
-    sb.append("icao24='").append(icao24).append('\'');
-    sb.append(", callsign='").append(callsign).append('\'');
-    sb.append(", originCountry='").append(originCountry).append('\'');
-    sb.append(", timePosition=").append(timePosition);
-    sb.append(", lastContact=").append(lastContact);
-    sb.append(", longitude=").append(longitude);
-    sb.append(", latitude=").append(latitude);
-    sb.append(", baroAltitude=").append(baroAltitude);
-    sb.append(", onGround=").append(onGround);
-    sb.append(", velocity=").append(velocity);
-    sb.append(", trueTrack=").append(trueTrack);
-    sb.append(", verticalRate=").append(verticalRate);
-//    sb.append(", sensors=").append(sensors);
-    sb.append(", geoAltitude=").append(geoAltitude);
-    sb.append(", squawk='").append(squawk).append('\'');
-    sb.append(", spi=").append(spi);
-    sb.append(", positionSource=").append(positionSource);
-    sb.append(", category=").append(category);
-    sb.append(", timeStamp=").append(timeStamp);
-    sb.append('}');
-    return sb.toString();
+    return new Gson().toJson(this);
   }
 }

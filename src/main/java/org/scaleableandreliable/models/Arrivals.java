@@ -1,5 +1,6 @@
 package org.scaleableandreliable.models;
 
+import com.google.gson.Gson;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import javax.persistence.Entity;
@@ -149,38 +150,6 @@ public class Arrivals extends PanacheEntityBase {
 
   @Override
   public String toString() {
-    return "Arrivals{"
-        + "icao24='"
-        + icao24
-        + '\''
-        + ", firstSeen="
-        + firstSeen
-        + ", estDepartureAirport='"
-        + estDepartureAirport
-        + '\''
-        + ", lastSeen="
-        + lastSeen
-        + ", estArrivalAirport='"
-        + estArrivalAirport
-        + '\''
-        + ", callsign='"
-        + callsign
-        + '\''
-        + ", estDepartureAirportHorizDistance="
-        + estDepartureAirportHorizDistance
-        + ", estDepartureAirportVertDistance="
-        + estDepartureAirportVertDistance
-        + ", estArrivalAirportHorizDistance="
-        + estArrivalAirportHorizDistance
-        + ", estArrivalAirportVertDistance="
-        + estArrivalAirportVertDistance
-        + ", departureAirportCandidatesCount="
-        + departureAirportCandidatesCount
-        + ", arrivalAirportCandidatesCount="
-        + arrivalAirportCandidatesCount
-        + ", id="
-        + id
-        + "} "
-        + super.toString();
+    return new Gson().toJson(this);
   }
 }
