@@ -55,7 +55,6 @@ public class AircraftState extends PanacheEntityBase {
       float velocity,
       float trueTrack,
       float verticalRate,
-      List<Integer> sensors,
       float geoAltitude,
       String squawk,
       boolean spi,

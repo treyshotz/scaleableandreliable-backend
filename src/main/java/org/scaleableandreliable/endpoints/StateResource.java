@@ -1,5 +1,6 @@
 package org.scaleableandreliable.endpoints;
 
+import io.agroal.api.AgroalDataSource;
 import org.jboss.resteasy.reactive.RestPath;
 import org.scaleableandreliable.models.AircraftState;
 import org.scaleableandreliable.repositories.StateRepository;
@@ -10,12 +11,17 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/state")
 public class StateResource {
 
+
+
   @Inject StateRepository repo;
+
 
   @GET
   @Produces(MediaType.TEXT_PLAIN)
@@ -30,11 +36,11 @@ public class StateResource {
     var allByIcao24 = repo.findAllByIcao24(icao24);
     return allByIcao24;
   }
-  
+
   @GET
   @Path("active")
   @Produces(MediaType.APPLICATION_JSON)
   public List<AircraftState> getAllState() {
-    return repo.findAll().list();
+    return repo.findLatest();
   }
 }
